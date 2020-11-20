@@ -5,12 +5,12 @@ import { createOption, removeOption } from '../Actions'
 import { connect } from 'react-redux'
 
 const Options = (props) => {
-  // const [count, setCount] = useState(0)
-  var count = 0
+  const [count, setCount] = useState(0)
+
   const [myArr, setMyArr] = useState([])
-  // const [opt, setOpt] = useState({
-  //   title: `Option ${count}`
-  // })
+  const [opt, setOpt] = useState({
+    title: `Option ${count}`
+  })
   // const [updateOpt, setUpdateOpt] = useState({
   //   title: ''
   // })
@@ -25,20 +25,21 @@ const Options = (props) => {
   // }
   // console.log('props', props, opt)
   const createOption = () => {
-    
-    if (props.options.length < 3 ) {
-      
-      props.addOption({title: `Option ${count}`})
+    console.log(count)
+    if (count < 3) {
+      props.addOption(count)
+      setCount(count + 1)
     }
-    
+
+    console.log('finish createOption')
   }
   useEffect(() => {
     if (props.options) {
 
-      count += 1
+
       setMyArr(Array.from(props.options))
-      
-      console.log("useEffect", props.options, "count", count)
+
+      // console.log("useEffect", props.options, "count", count)
     }
   }, [props, count])
 
@@ -64,7 +65,7 @@ const Options = (props) => {
                   type="text"
                   name='title'
                   // onChange={ handleChange }
-                  placeholder={ choice.title }
+                  placeholder={ `Option ${choice}` }
                 />
                 <BsFillXSquareFill className="smIcons" />
                 <FaPlusSquare className="smIcons" />

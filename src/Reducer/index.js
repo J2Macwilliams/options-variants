@@ -25,10 +25,11 @@ export const reducer = (state = initialState, action) => {
     
     case "ADD_OPTION":
     //   console.log('ReducerCase',  action.payload, )
-    //  console.log('state.options.length,', state.options.length)
+     console.log('state.options.length,', state.options.length)
+
       return {
         ...state,
-        options: new Set([...state.options, action.payload])
+        options: [...state.options, action.payload]
         
       }
     // case UPDATE_OPTION:
