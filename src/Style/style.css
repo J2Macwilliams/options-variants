@@ -1,0 +1,137 @@
+html {
+  max-width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.iconsPlus {
+  font-size: 2rem;
+}
+
+.smIcons {
+  font-size: 1.5rem;
+}
+
+.optionsValues {
+  width: 98%;
+  min-height: 100vh;
+  margin: 1%;
+  border: 1px solid grey;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-radius: 8px;
+}
+
+.optionsValues .ovTitle {
+  background-color: lightgrey;
+  padding: 1%;
+  border-radius: 8px 8px 0 0;
+  border-bottom: 1px solid;
+}
+
+.options {
+  width: auto;
+  margin: 1%;
+  border: 1px solid grey;
+  border-radius: 8px;
+}
+
+.options .optionTop {
+  background-color: lightgrey;
+  margin: 0;
+  padding: 1%;
+  border-radius: 8px 8px 0 0;
+  border-bottom: 1px solid;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.options .optionBlock {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.options .optBox {
+  width: 30%;
+  border: 1px solid;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 1%;
+  margin: 1%;
+  background: lightgrey;
+}
+
+.options .optBox .optTitle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.options .optBox .optTitle input {
+  width: 70%;
+}
+
+.variants {
+  width: auto;
+  margin: 1%;
+  border: 1px solid grey;
+  border-radius: 8px;
+}
+
+.variants .variantsTop {
+  background-color: lightgrey;
+  margin: 0;
+  padding: 1%;
+  border-radius: 8px 8px 0 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid;
+}
+
+.form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.form label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: .5%;
+  font-size: 1.5rem;
+}
+/*# sourceMappingURL=style.css.map */

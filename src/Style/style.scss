@@ -1,0 +1,95 @@
+html{
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.iconsPlus{
+  font-size: 2rem;
+}
+.smIcons{
+  font-size: 1.5rem
+}
+.optionsValues{
+  width: 98%;
+  min-height: 100vh;
+  margin: 1%;
+  border: 1px solid grey;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  
+  
+  .ovTitle{
+    background-color: lightgrey;
+    padding: 1%;
+    border-radius: 8px 8px 0 0;
+    border-bottom: 1px solid;
+  }
+}
+.options{
+  width: auto;
+  margin: 1%;
+  border: 1px solid grey;
+  border-radius: 8px ;
+  
+  .optionTop{
+    background-color: lightgrey;
+    margin: 0;
+    padding: 1%;
+    border-radius: 8px 8px 0 0;
+    border-bottom: 1px solid;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .optionBlock{
+    display: flex;
+    // justify-content: space-around;
+  }
+  .optBox{
+    width: 30%;
+    border: 1px solid;
+    display: flex;
+    flex-direction: column;
+    padding: 1%;
+    margin:1%;
+    background: lightgrey;;
+
+    .optTitle{
+      display: flex;
+      justify-content: space-around;
+    }
+    .optTitle input{
+      width: 70%;
+    }
+  }
+}
+
+.variants{
+  width: auto;
+  margin: 1%;
+  border: 1px solid grey;
+  border-radius: 8px;
+  
+  .variantsTop{
+    background-color: lightgrey;
+    margin: 0;
+    padding: 1%;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid;
+  }
+}
+
+.form{
+  display: flex;
+  justify-content: space-around;
+
+}
+.form label{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: .5%;
+  font-size: 1.5rem;
+}
