@@ -9,7 +9,7 @@ const Variants = (props) => {
   useEffect(() => {
     if (props.options) {
       setVariantsArr(Array.from(props.options))
-      console.log("Variants_useEffect", props.options, variantsArr)
+      console.log("Variants_useEffect", props.options )
     }
   }, [props])
   return (
@@ -26,15 +26,13 @@ const Variants = (props) => {
           <label htmlFor="Image">Image
             <input type="file" />
           </label>
-          { variantsArr ?
-            variantsArr.map((option, Index) => (
-              <label key={ Index } htmlFor="Option">{ option.title }
-                <input type="select" >
-                <option value="null">---</option>
-                  {/* { option.values ? option.values.map((v, index) => (
-                    <option key={ index } value={ v.name }>{ v.name }</option>
-                  )): "" } */}
-                </input>
+          { props.options ?
+            props.options.map((option, Index) => (
+              <label key={ Index } htmlFor="Option">{ `Option ${option}` }
+                <select name={ option} >
+                <option value="">---</option>
+                  
+                </select>
               </label>
             )): ""}
           <label htmlFor="Price">Price
@@ -60,3 +58,7 @@ const mapStateToProps = (state) => {
   }
 }
 export default connect(mapStateToProps)(Variants)
+
+{/* { option.values ? option.values.map((v, index) => (
+                    <option key={ index } value={ v.name }>{ v.name }</option>
+                  )): "" } */}
