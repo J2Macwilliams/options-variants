@@ -9,7 +9,7 @@ export const DELETE_VALUE = "DELETE_VALUE"
 export const createOption = option => {
   console.log('ACTION-addOption', option)
   return {
-    type: "ADD_OPTION",
+    type: ADD_OPTION,
     payload: option
   } 
 }
@@ -22,7 +22,7 @@ export const updateOption = option => {
 export const removeOption = option => {
   console.log('deleteOption')
   return {
-    type: "DELETE_OPTION",
+    type: DELETE_OPTION,
     payload: option
   }
 }
