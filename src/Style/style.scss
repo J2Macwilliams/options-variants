@@ -50,6 +50,7 @@ html{
     border: 1px solid;
     display: flex;
     flex-direction: column;
+    align-items: center;
     padding: 1%;
     margin:1%;
     background: lightgrey;;
@@ -58,9 +59,7 @@ html{
       display: flex;
       justify-content: space-around;
     }
-    .optTitle input{
-      width: 70%;
-    }
+   
   }
 }
 
@@ -80,16 +79,22 @@ html{
     align-items: center;
     border-bottom: 1px solid;
   }
-}
 
-.form{
+  .variantsBottom{
+    padding: 1%
+  }
+
+  .form{
   display: flex;
   justify-content: space-around;
+  align-items: center;
 
+  }
+  .form label{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: .5%;
+    font-size: 1.5rem;
+  }
 }
-.form label{
-  display: flex;
-  flex-direction: column;
-  margin-bottom: .5%;
-  font-size: 1.5rem;
-}
+

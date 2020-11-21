@@ -74,6 +74,9 @@ html {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 1%;
   margin: 1%;
   background: lightgrey;
@@ -85,10 +88,6 @@ html {
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-}
-
-.options .optBox .optTitle input {
-  width: 70%;
 }
 
 .variants {
@@ -115,15 +114,22 @@ html {
   border-bottom: 1px solid;
 }
 
-.form {
+.variants .variantsBottom {
+  padding: 1%;
+}
+
+.variants .form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.form label {
+.variants .form label {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
