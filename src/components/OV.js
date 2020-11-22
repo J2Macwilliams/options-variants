@@ -1,6 +1,6 @@
 import React from 'react'
 import Options from './Options'
-import Variants from './Variants'
+
 
 const OV = () => {
   return (
@@ -10,7 +10,7 @@ const OV = () => {
           <h3>Options/Variants</h3>
         </div>
         <Options />
-        <Variants />
+        
 
       </div>
     </>

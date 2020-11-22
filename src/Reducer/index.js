@@ -2,12 +2,8 @@
 // Conventions
 import {
   ADD_OPTION,
-  UPDATE_OPTION,
   DELETE_OPTION,
-  ADD_VALUE,
-  UPDATE_VALUE,
-  DELETE_VALUE,
-  addOption
+  ADD_PRODUCT
 } from '../Actions/index'
 
 
@@ -16,47 +12,43 @@ const initialState = {
   //   title: '',
   //   values: new Set()
   // }])
-  options: []
+  options: [],
+  products: []
 }
 
 export const reducer = (state = initialState, action) => {
   console.log('reducer is working', action)
   switch (action.type) {
     
-    case ADD_OPTION:
+    // case ADD_OPTION:
     //   console.log('ReducerCase',  action.payload, )
-     console.log('state.options.length,', state.options.length)
+    //  console.log('state.options.length,', state.options.length)
 
-      return {
-        ...state,
-        options: [...state.options, action.payload]
+    //   return {
+    //     ...state,
+    //     options: [...state.options, action.payload]
         
-      }
-    // case UPDATE_OPTION:
-    //   console.log('updateOption_Reducer', action.payload)
-    //   return {
-
     //   }
-    case DELETE_OPTION:
-      console.log('deleteOption_Reducer', action.payload)
-      // var newArr = state.options.filter((action.payload) => (
+    
+    // case DELETE_OPTION:
+    //   console.log('deleteOption_Reducer', action.payload)
+     
+    //   return {
+    //     ...state,
+    //   }
 
-      // ))
+    case ADD_PRODUCT:
+      console.log('addProduct_Reducer', action.payload)
       return {
         ...state,
+        products: [...state.products, action.payload]
       }
-
-    // case ADD_VALUE:
-    //   console.log('addValue_Reducer', action.payload)
-    //   return {
-
-    //   }
-    // case UPDATE_VALUE:
+    // case UPDATE_PRODUCT:
     //   console.log('updateValue_Reducer', action.payload)
     //   return {
 
     //   }
-    // case DELETE_VALUE:
+    // case DELETE_PRODUCT:
     //   console.log('deleteValue_Reducer', action.payload)
     //   return {
 
