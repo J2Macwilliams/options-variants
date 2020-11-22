@@ -1,10 +1,9 @@
 export const ADD_OPTION = "ADD_OPTION"
-export const UPDATE_OPTION = "UPDATE_OPTION"
 export const DELETE_OPTION = "DELETE_OPTION"
 
-export const ADD_VALUE = "ADD_VALUE"
+export const ADD_PRODUCT = "ADD_PRODUCT"
 export const UPDATE_VALUE = "UPDATE_VALUE"
-export const DELETE_VALUE = "DELETE_VALUE"
+export const DELETE_PRODUCT = "DELETE_PRODUCT"
 
 export const createOption = option => {
   console.log('ACTION-addOption', option)
@@ -13,12 +12,7 @@ export const createOption = option => {
     payload: option
   } 
 }
-export const updateOption = option => {
-  return {
-    type: "UPDATE_OPTION",
-    payload: option
-  }
-}
+
 export const removeOption = option => {
   console.log('deleteOption')
   return {
@@ -27,21 +21,10 @@ export const removeOption = option => {
   }
 }
 
-export const addValue = value => {
+export const createProduct = product => {
+  console.log('ACTION-createProduct', product)
   return {
-    type: "ADD_VALUE",
-    payload: value
-  }
-}
-export const updateValue = value => {
-  return {
-    type: "UPDATE_VALUE",
-    payload: value
-  }
-}
-export const deleteValue = value => {
-  return {
-    type: "DELETE_VALUE",
-    payload: value
-  }
+    type: ADD_PRODUCT,
+    payload: product
+  } 
 }
