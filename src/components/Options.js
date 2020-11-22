@@ -3,29 +3,39 @@ import { FaPlusSquare } from 'react-icons/fa'
 import { BsFillXSquareFill } from 'react-icons/bs'
 import { ImArrowUp } from 'react-icons/im'
 import { TextField } from '@material-ui/core'
-import { createOption, removeOption } from '../Actions'
+import { createOption, removeOption, createProduct } from '../Actions'
 import { connect } from 'react-redux'
 
 
 const Options = (props) => {
   const [count, setCount] = useState(0)
   const [change, setChange] = useState(0)
-  // const [myArr, setMyArr] = useState([])
-  const [optionFields, setOptionFields] = useState([])
 
+  const [optionFields, setOptionFields] = useState([])
+  const [itemVariants, setItemVariants] = useState({
+    code: '',
+    image: '',
+    price: 0,
+    weight: 0,
+    sku: ''
+
+  })
   // Just looking for a re-render here
   useEffect(() => { }, [change])
 
+  // const handleSubmit = (e) => {
+  //   e.preventDefault()
+  //   console.log('OptionFields', optionFields)
+  // }
 
   const handleAddOptions = () => {
     if (count <= 2) {
       const values = [...optionFields];
-      
       values.push({
         option: 'Option ' + count,
         choices: []
       });
-      
+
       setOptionFields(values);
       // Increment for Option constraint
       setCount(count + 1)
@@ -35,7 +45,6 @@ const Options = (props) => {
   const handleRemoveOptions = (e, index) => {
     e.preventDefault();
     const values = [...optionFields];
-    // console.log('hrOptions', values)
     values.splice(index, 1);
     setOptionFields(values);
     setCount(count - 1)
@@ -44,7 +53,6 @@ const Options = (props) => {
   const handleAddValues = (e, index) => {
     e.preventDefault()
     const values = [...optionFields]
-    // console.log('addValues', values[index].choices)
     const variants = values[index].choices
     variants.push({ choice: "" })
     setChange(change + 1)
@@ -60,10 +68,7 @@ const Options = (props) => {
 
   const handleChangeOption = (index, event) => {
     const values = [...optionFields]
-    // const options = new Set(values)
-    // console.log('check for Dupes', options)
     values[index][event.target.name] = event.target.value
-    console.log('changeOption', values)
     setOptionFields(values)
   }
 
@@ -71,31 +76,54 @@ const Options = (props) => {
     const values = [...optionFields]
     const variants = values[index].choices
     variants[vIdx][event.target.name] = event.target.value
-
+    setChange(change + 1)
   }
 
-  const handleSubmit = (e) => {
+
+
+  const handleChange = e => {
     e.preventDefault()
-    console.log('OptionFields', optionFields)
+    setItemVariants({
+      ...itemVariants,
+      [e.target.name]: e.target.value
+    })
+
   }
 
+  const clearProduct = () => {
+    setItemVariants({
+      code: '',
+      image: '',
+      price: 0,
+      weight: 0,
+      sku: ''
+    })
+    setOptionFields([])
+  }
 
+  const productSubmit = (e) => {
+    e.preventDefault()
+    // console.log(itemVariants)
+    props.createProduct(itemVariants)
+  }
 
+  if (props.products) {
+    console.log("ProductCreationResponse", props.products)
+  }
   return (
     <>
       <div className="options">
         <div className="optionTop">
           <h3>Options</h3>
-
           <div>
             <FaPlusSquare onClick={ handleAddOptions } className="iconsPlus" />
-            <ImArrowUp onClick={ handleSubmit } type="submit" className="iconsPlus" />
-
+            {/* <ImArrowUp onClick={ handleSubmit } type="submit" className="iconsPlus" /> */ }
           </div>
-
         </div>
         <div >
-          <form className="optionBlock" onSubmit={ handleSubmit }>
+          <form className="optionBlock"
+          // onSubmit={ handleSubmit }
+          >
             { optionFields.map((option, index) => (
               <div key={ index } className='optBox'>
                 <div className="optTitle">
@@ -110,7 +138,6 @@ const Options = (props) => {
                   <FaPlusSquare onClick={ (e) => handleAddValues(e, index) } className="iconsPlus" />
                 </div>
                 { option.choices.map((v, vIdx) => (
-
                   <div key={ vIdx }>
 
                     <TextField
@@ -126,100 +153,67 @@ const Options = (props) => {
                   </div>
                 )) }
               </div>
-
             )) }
+          </form>
+        </div>
+      </div>
+      <div className="variants">
+        <div className="variantsTop">
+          <h3>Variants</h3>
+          <ImArrowUp type="submit" onClick={ productSubmit } className="iconsPlus" />
+        </div>
+        <div className="variantsBottom">
+          <form className="form" >
+            <label htmlFor="Product Code">Product Code
+            <input name="code" onChange={ handleChange } value={ itemVariants.code } type="text" />
+            </label>
+            <label htmlFor="Image">Image
+            <input name="image" onChange={ e => handleChange(e) } value={ itemVariants.image } type="file" />
+            </label>
+            { optionFields.map((option, index) => (
+              <div>
+                <label key={ index }>{ option.option }</label>
+                <select onChange={ handleChange } name={ option.option } value={ itemVariants[option] }>
+                  <option value="---">---</option>
+                  { option.choices.map((v, vIdx) =>
+                    <option key={ vIdx } value={ v.choice }>{ v.choice }</option>
+                  ) }
+                </select>
+              </div>
+            )) }
+            <label htmlFor="Price">Price
+            <input name="price" onChange={ e => handleChange(e) } value={ itemVariants.price } type="number" />
+            </label>
+            <label htmlFor="Weight">Weight
+            <input name="weight" onChange={ e => handleChange(e) } value={ itemVariants.weight } type="number" />
+            </label>
+            <label htmlFor="SKU">SKU
+            <input name="sku" onChange={ e => handleChange(e) } value={ itemVariants.sku } type="text" />
+            </label>
+            <label >Remove
+            <BsFillXSquareFill className='iconsPlus' onClick={ () => clearProduct() } />
+            </label>
 
           </form>
 
         </div>
-
-
-      </div>
+      </div >
     </>
   )
 }
 const mapStateToProps = (state) => {
-  const { options } = state
+  const { options, products } = state
   return {
-    options
+    options,
+    products
   }
 }
 const mapDispatchToProps = dispatch => {
   return {
     addOption: (option) => dispatch(createOption(option)),
-    deleteOption: (option) => dispatch(removeOption(option))
+    deleteOption: (option) => dispatch(removeOption(option)),
+    createProduct: (product) => dispatch(createProduct(product))
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Options)
 
-// { type: "ADD_OPTION", payload: option }
-// console.log('updateOpt', updateOpt)
-// console.log('props', props.options)
-// const createOption = () => {
-//   console.log(count)
-//   if (count < 3) {
-//     props.addOption("Option" + " " + count)
-//     setCount(count + 1)
-//   }
-
-//   console.log('finish createOption')
-// }
-// useEffect(() => {
-//   if (props.options) {
-
-
-//     setMyArr(Array.from(props.options))
-
-
-//   }
-// }, [props, count])
-
-// if (props.options) {
-//   console.log('optionsComponent', props.options, count)
-// }
-
-{/* { myArr ? myArr.map((choice, index) => (
-            <div key={ index } className="optBox">
-              <div className="optTitle">
-               
-                <input
-                  type="text"
-                  name='title'
-                  data-id={index}
-                  onChange={ handleChange }
-                  placeholder={ choice }
-                />
-                <BsFillXSquareFill className="smIcons" />
-                <FaPlusSquare className="smIcons" />
-              </div>
-            </div>
-          )) : "" } */}
-
-
-
-{/* { myArr.length > 0 ?
-          props.options.map(opt => (
-            <div key={ choice.title } className="opt">
-              <div className="optTop">
-                <input
-                  type="text"
-                  onChange={ handleChange }
-                  placeholder={ option.title }
-                /> */}
-
-{/* </div> */ }
-{/* {opt.values ? opt.values.map(v =>
-                <div className="optValue">
-                  <input
-                    type="text"
-                    onChange={updateValue}
-                    placeholder={ v.title? v.title :`Value ${v.counter}`  }
-                  />
-                  <FaMinusSquare onClick={deleteValue(v.name)}/>
-                </div>
-              )
-                : ''
-              } */}
-{/* </div>
-          )) : ''
-        } */}
